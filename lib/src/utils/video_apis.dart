@@ -33,16 +33,8 @@ class VideoApis {
     String? hash,
   ) async {
     try {
-      print(videoId);
-      print('token: $token');
       final response = await _makeRequestHash(videoId, token, hash);
       final jsonData = jsonDecode(response.body)['play'];
-      // final dashData = jsonData['dash'];
-      // final hlsData = jsonData['hls'];
-      print(response.statusCode);
-      print(response.body);
-      print('progressive');
-      print(jsonData);
       final List<dynamic> rawStreamUrls =
           (jsonData['progressive'] as List<dynamic>?) ?? <dynamic>[];
       final List<VideoQalityUrls> vimeoQualityUrls = [];
